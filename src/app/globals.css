@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0b0c10;
+  --color-foreground: #e5e7eb;
+  --color-accent: #8b5cf6;
+  --color-silver-matte: #E2E8F0;
+  --color-parchment: #f4ecd8;
+  --color-ink: #2c2420;
+  
+  --font-inter: "var(--font-inter)", sans-serif;
+  --font-serif: "var(--font-spectral)", serif;
+  --font-raleway: "Raleway", sans-serif;
+
+  --animate-flip: flip 6s infinite steps(2, end);
+  --animate-rotate: rotate 3s linear infinite;
+  --animate-shimmer2: shimmer2 2s infinite linear;
+
+  @keyframes flip {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes rotate {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes shimmer2 {
+    0% { background-position: 0% 0%; }
+    100% { background-position: -200% 0%; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-accent/30;
+    font-family: var(--font-inter);
+    overflow-x: hidden;
+  }
+}
+
+/* Medieval Parchment Style */
+.medieval-parchment {
+  background-color: #f4ecd8;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0,0,0,0.02) 0%, transparent 80%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)' opacity='0.1'/%3E%3C/svg%3E");
+  color: #2c2420;
+  box-shadow: inset 0 0 150px rgba(0,0,0,0.15);
+}
+
+.text-medieval {
+  font-family: var(--font-serif);
+  line-height: 1.8;
+}
+
+/* Lenis CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.gsap-reveal { visibility: hidden; }
+
+/* Environment Overlays */
+.film-grain {
+    position: fixed; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 50; opacity: 0.1; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+}
+
+.bg-grid-theme {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.3;
+    background-size: 60px 60px;
+    background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+
+.text-silver-matte {
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.4) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.5));
+}
+
+.premium-depth-card {
+    background: linear-gradient(145deg, #162C6D 0%, #0A101D 100%);
+    box-shadow: 
+        0 40px 100px -20px rgba(0, 0, 0, 0.9),
+        0 20px 40px -20px rgba(0, 0, 0, 0.8),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.btn-modern-light {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+    color: #0F172A;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.1), 0 12px 24px -4px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,1), inset 0 -3px 6px rgba(0,0,0,0.06);
+}
+
+/* Custom Premium Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.custom-scrollbar-white::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar-white::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar-white::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar-white::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
